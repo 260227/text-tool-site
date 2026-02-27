@@ -22,6 +22,6 @@ export default defineConfig({
         drop_console: true, // 打包移除 console
       },
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 2000,
   }
 })
