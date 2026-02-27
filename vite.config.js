@@ -5,23 +5,15 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
+  base: '/text-tool-site/', // 关键：适配GitHub Pages子路径
   plugins: [
     vue(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
+    AutoImport({ resolvers: [ElementPlusResolver()] }),
+    Components({ resolvers: [ElementPlusResolver()] }),
   ],
-  // 打包优化：减小体积，加快加载速度
   build: {
     minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // 打包移除 console
-      },
-    },
+    terserOptions: { compress: { drop_console: true } },
     chunkSizeWarningLimit: 2000,
   }
 })
